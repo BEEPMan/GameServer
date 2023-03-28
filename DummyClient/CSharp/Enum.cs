@@ -26,11 +26,12 @@ namespace Protocol {
           string.Concat(
             "CgpFbnVtLnByb3RvEghQcm90b2NvbCpoCgpQbGF5ZXJUeXBlEhQKEFBMQVlF",
             "Ul9UWVBFX05PTkUQABIWChJQTEFZRVJfVFlQRV9LTklHSFQQARIUChBQTEFZ",
-            "RVJfVFlQRV9NQUdFEAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEANiBnByb3Rv",
-            "Mw=="));
+            "RVJfVFlQRV9NQUdFEAISFgoSUExBWUVSX1RZUEVfQVJDSEVSEAMqOgoIS2V5",
+            "U3RhdGUSFwoTS0VZX1NUQVRFX1VOUFJFU1NFRBAAEhUKEUtFWV9TVEFURV9Q",
+            "UkVTU0VEEAJiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.PlayerType), }, null, null));
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Protocol.PlayerType), typeof(global::Protocol.KeyState), }, null, null));
     }
     #endregion
 
@@ -41,6 +42,11 @@ namespace Protocol {
     [pbr::OriginalName("PLAYER_TYPE_KNIGHT")] Knight = 1,
     [pbr::OriginalName("PLAYER_TYPE_MAGE")] Mage = 2,
     [pbr::OriginalName("PLAYER_TYPE_ARCHER")] Archer = 3,
+  }
+
+  public enum KeyState {
+    [pbr::OriginalName("KEY_STATE_UNPRESSED")] Unpressed = 0,
+    [pbr::OriginalName("KEY_STATE_PRESSED")] Pressed = 2,
   }
 
   #endregion

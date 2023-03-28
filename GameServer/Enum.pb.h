@@ -83,6 +83,31 @@ inline bool PlayerType_Parse(
   return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<PlayerType>(
     PlayerType_descriptor(), name, value);
 }
+enum KeyState : int {
+  KEY_STATE_UNPRESSED = 0,
+  KEY_STATE_PRESSED = 2,
+  KeyState_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
+  KeyState_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
+};
+bool KeyState_IsValid(int value);
+constexpr KeyState KeyState_MIN = KEY_STATE_UNPRESSED;
+constexpr KeyState KeyState_MAX = KEY_STATE_PRESSED;
+constexpr int KeyState_ARRAYSIZE = KeyState_MAX + 1;
+
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* KeyState_descriptor();
+template<typename T>
+inline const std::string& KeyState_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, KeyState>::value ||
+    ::std::is_integral<T>::value,
+    "Incorrect type passed to function KeyState_Name.");
+  return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
+    KeyState_descriptor(), enum_t_value);
+}
+inline bool KeyState_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, KeyState* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<KeyState>(
+    KeyState_descriptor(), name, value);
+}
 // ===================================================================
 
 
@@ -109,6 +134,11 @@ template <> struct is_proto_enum< ::Protocol::PlayerType> : ::std::true_type {};
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::Protocol::PlayerType>() {
   return ::Protocol::PlayerType_descriptor();
+}
+template <> struct is_proto_enum< ::Protocol::KeyState> : ::std::true_type {};
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::Protocol::KeyState>() {
+  return ::Protocol::KeyState_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

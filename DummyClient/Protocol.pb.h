@@ -1343,10 +1343,29 @@ class C_MOVE final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kMoveInfoFieldNumber = 2,
     kPlayerIdFieldNumber = 1,
-    kXFieldNumber = 2,
-    kYFieldNumber = 3,
+    kXFieldNumber = 3,
+    kYFieldNumber = 4,
   };
+  // .Protocol.MoveInfo moveInfo = 2;
+  bool has_moveinfo() const;
+  private:
+  bool _internal_has_moveinfo() const;
+  public:
+  void clear_moveinfo();
+  const ::Protocol::MoveInfo& moveinfo() const;
+  PROTOBUF_FUTURE_MUST_USE_RESULT ::Protocol::MoveInfo* release_moveinfo();
+  ::Protocol::MoveInfo* mutable_moveinfo();
+  void set_allocated_moveinfo(::Protocol::MoveInfo* moveinfo);
+  private:
+  const ::Protocol::MoveInfo& _internal_moveinfo() const;
+  ::Protocol::MoveInfo* _internal_mutable_moveinfo();
+  public:
+  void unsafe_arena_set_allocated_moveinfo(
+      ::Protocol::MoveInfo* moveinfo);
+  ::Protocol::MoveInfo* unsafe_arena_release_moveinfo();
+
   // uint64 playerId = 1;
   void clear_playerid();
   ::PROTOBUF_NAMESPACE_ID::uint64 playerid() const;
@@ -1356,7 +1375,7 @@ class C_MOVE final :
   void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
-  // float x = 2;
+  // float x = 3;
   void clear_x();
   float x() const;
   void set_x(float value);
@@ -1365,7 +1384,7 @@ class C_MOVE final :
   void _internal_set_x(float value);
   public:
 
-  // float y = 3;
+  // float y = 4;
   void clear_y();
   float y() const;
   void set_y(float value);
@@ -1381,6 +1400,7 @@ class C_MOVE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::Protocol::MoveInfo* moveinfo_;
   ::PROTOBUF_NAMESPACE_ID::uint64 playerid_;
   float x_;
   float y_;
@@ -1497,10 +1517,29 @@ class S_MOVE final :
   // accessors -------------------------------------------------------
 
   enum : int {
+    kMoveInfoFieldNumber = 2,
     kPlayerIdFieldNumber = 1,
-    kXFieldNumber = 2,
-    kYFieldNumber = 3,
+    kXFieldNumber = 3,
+    kYFieldNumber = 4,
   };
+  // .Protocol.MoveInfo moveInfo = 2;
+  bool has_moveinfo() const;
+  private:
+  bool _internal_has_moveinfo() const;
+  public:
+  void clear_moveinfo();
+  const ::Protocol::MoveInfo& moveinfo() const;
+  PROTOBUF_FUTURE_MUST_USE_RESULT ::Protocol::MoveInfo* release_moveinfo();
+  ::Protocol::MoveInfo* mutable_moveinfo();
+  void set_allocated_moveinfo(::Protocol::MoveInfo* moveinfo);
+  private:
+  const ::Protocol::MoveInfo& _internal_moveinfo() const;
+  ::Protocol::MoveInfo* _internal_mutable_moveinfo();
+  public:
+  void unsafe_arena_set_allocated_moveinfo(
+      ::Protocol::MoveInfo* moveinfo);
+  ::Protocol::MoveInfo* unsafe_arena_release_moveinfo();
+
   // uint64 playerId = 1;
   void clear_playerid();
   ::PROTOBUF_NAMESPACE_ID::uint64 playerid() const;
@@ -1510,7 +1549,7 @@ class S_MOVE final :
   void _internal_set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value);
   public:
 
-  // float x = 2;
+  // float x = 3;
   void clear_x();
   float x() const;
   void set_x(float value);
@@ -1519,7 +1558,7 @@ class S_MOVE final :
   void _internal_set_x(float value);
   public:
 
-  // float y = 3;
+  // float y = 4;
   void clear_y();
   float y() const;
   void set_y(float value);
@@ -1535,6 +1574,7 @@ class S_MOVE final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::Protocol::MoveInfo* moveinfo_;
   ::PROTOBUF_NAMESPACE_ID::uint64 playerid_;
   float x_;
   float y_;
@@ -1994,7 +2034,86 @@ inline void C_MOVE::set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   // @@protoc_insertion_point(field_set:Protocol.C_MOVE.playerId)
 }
 
-// float x = 2;
+// .Protocol.MoveInfo moveInfo = 2;
+inline bool C_MOVE::_internal_has_moveinfo() const {
+  return this != internal_default_instance() && moveinfo_ != nullptr;
+}
+inline bool C_MOVE::has_moveinfo() const {
+  return _internal_has_moveinfo();
+}
+inline const ::Protocol::MoveInfo& C_MOVE::_internal_moveinfo() const {
+  const ::Protocol::MoveInfo* p = moveinfo_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Protocol::MoveInfo&>(
+      ::Protocol::_MoveInfo_default_instance_);
+}
+inline const ::Protocol::MoveInfo& C_MOVE::moveinfo() const {
+  // @@protoc_insertion_point(field_get:Protocol.C_MOVE.moveInfo)
+  return _internal_moveinfo();
+}
+inline void C_MOVE::unsafe_arena_set_allocated_moveinfo(
+    ::Protocol::MoveInfo* moveinfo) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(moveinfo_);
+  }
+  moveinfo_ = moveinfo;
+  if (moveinfo) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Protocol.C_MOVE.moveInfo)
+}
+inline ::Protocol::MoveInfo* C_MOVE::release_moveinfo() {
+  
+  ::Protocol::MoveInfo* temp = moveinfo_;
+  moveinfo_ = nullptr;
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::Protocol::MoveInfo* C_MOVE::unsafe_arena_release_moveinfo() {
+  // @@protoc_insertion_point(field_release:Protocol.C_MOVE.moveInfo)
+  
+  ::Protocol::MoveInfo* temp = moveinfo_;
+  moveinfo_ = nullptr;
+  return temp;
+}
+inline ::Protocol::MoveInfo* C_MOVE::_internal_mutable_moveinfo() {
+  
+  if (moveinfo_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Protocol::MoveInfo>(GetArenaForAllocation());
+    moveinfo_ = p;
+  }
+  return moveinfo_;
+}
+inline ::Protocol::MoveInfo* C_MOVE::mutable_moveinfo() {
+  // @@protoc_insertion_point(field_mutable:Protocol.C_MOVE.moveInfo)
+  return _internal_mutable_moveinfo();
+}
+inline void C_MOVE::set_allocated_moveinfo(::Protocol::MoveInfo* moveinfo) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(moveinfo_);
+  }
+  if (moveinfo) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(moveinfo));
+    if (message_arena != submessage_arena) {
+      moveinfo = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, moveinfo, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  moveinfo_ = moveinfo;
+  // @@protoc_insertion_point(field_set_allocated:Protocol.C_MOVE.moveInfo)
+}
+
+// float x = 3;
 inline void C_MOVE::clear_x() {
   x_ = 0;
 }
@@ -2014,7 +2133,7 @@ inline void C_MOVE::set_x(float value) {
   // @@protoc_insertion_point(field_set:Protocol.C_MOVE.x)
 }
 
-// float y = 3;
+// float y = 4;
 inline void C_MOVE::clear_y() {
   y_ = 0;
 }
@@ -2058,7 +2177,86 @@ inline void S_MOVE::set_playerid(::PROTOBUF_NAMESPACE_ID::uint64 value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MOVE.playerId)
 }
 
-// float x = 2;
+// .Protocol.MoveInfo moveInfo = 2;
+inline bool S_MOVE::_internal_has_moveinfo() const {
+  return this != internal_default_instance() && moveinfo_ != nullptr;
+}
+inline bool S_MOVE::has_moveinfo() const {
+  return _internal_has_moveinfo();
+}
+inline const ::Protocol::MoveInfo& S_MOVE::_internal_moveinfo() const {
+  const ::Protocol::MoveInfo* p = moveinfo_;
+  return p != nullptr ? *p : reinterpret_cast<const ::Protocol::MoveInfo&>(
+      ::Protocol::_MoveInfo_default_instance_);
+}
+inline const ::Protocol::MoveInfo& S_MOVE::moveinfo() const {
+  // @@protoc_insertion_point(field_get:Protocol.S_MOVE.moveInfo)
+  return _internal_moveinfo();
+}
+inline void S_MOVE::unsafe_arena_set_allocated_moveinfo(
+    ::Protocol::MoveInfo* moveinfo) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(moveinfo_);
+  }
+  moveinfo_ = moveinfo;
+  if (moveinfo) {
+    
+  } else {
+    
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Protocol.S_MOVE.moveInfo)
+}
+inline ::Protocol::MoveInfo* S_MOVE::release_moveinfo() {
+  
+  ::Protocol::MoveInfo* temp = moveinfo_;
+  moveinfo_ = nullptr;
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+  return temp;
+}
+inline ::Protocol::MoveInfo* S_MOVE::unsafe_arena_release_moveinfo() {
+  // @@protoc_insertion_point(field_release:Protocol.S_MOVE.moveInfo)
+  
+  ::Protocol::MoveInfo* temp = moveinfo_;
+  moveinfo_ = nullptr;
+  return temp;
+}
+inline ::Protocol::MoveInfo* S_MOVE::_internal_mutable_moveinfo() {
+  
+  if (moveinfo_ == nullptr) {
+    auto* p = CreateMaybeMessage<::Protocol::MoveInfo>(GetArenaForAllocation());
+    moveinfo_ = p;
+  }
+  return moveinfo_;
+}
+inline ::Protocol::MoveInfo* S_MOVE::mutable_moveinfo() {
+  // @@protoc_insertion_point(field_mutable:Protocol.S_MOVE.moveInfo)
+  return _internal_mutable_moveinfo();
+}
+inline void S_MOVE::set_allocated_moveinfo(::Protocol::MoveInfo* moveinfo) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete reinterpret_cast< ::PROTOBUF_NAMESPACE_ID::MessageLite*>(moveinfo_);
+  }
+  if (moveinfo) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper<
+            ::PROTOBUF_NAMESPACE_ID::MessageLite>::GetOwningArena(
+                reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(moveinfo));
+    if (message_arena != submessage_arena) {
+      moveinfo = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, moveinfo, submessage_arena);
+    }
+    
+  } else {
+    
+  }
+  moveinfo_ = moveinfo;
+  // @@protoc_insertion_point(field_set_allocated:Protocol.S_MOVE.moveInfo)
+}
+
+// float x = 3;
 inline void S_MOVE::clear_x() {
   x_ = 0;
 }
@@ -2078,7 +2276,7 @@ inline void S_MOVE::set_x(float value) {
   // @@protoc_insertion_point(field_set:Protocol.S_MOVE.x)
 }
 
-// float y = 3;
+// float y = 4;
 inline void S_MOVE::clear_y() {
   y_ = 0;
 }

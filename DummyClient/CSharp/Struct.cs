@@ -27,11 +27,14 @@ namespace Protocol {
             "CgxTdHJ1Y3QucHJvdG8SCFByb3RvY29sGgpFbnVtLnByb3RvImIKBlBsYXll",
             "chIKCgJpZBgBIAEoBBIMCgRuYW1lGAIgASgJEigKClBsYXllclR5cGUYAyAB",
             "KA4yFC5Qcm90b2NvbC5QbGF5ZXJUeXBlEgkKAXgYBCABKAISCQoBeRgFIAEo",
-            "AmIGcHJvdG8z"));
+            "AiJkCghNb3ZlSW5mbxIJCgFoGAEgASgCEgkKAXYYAiABKAISIAoEaEtleRgD",
+            "IAEoDjISLlByb3RvY29sLktleVN0YXRlEiAKBHZLZXkYBCABKA4yEi5Qcm90",
+            "b2NvbC5LZXlTdGF0ZWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.EnumReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.Player), global::Protocol.Player.Parser, new[]{ "Id", "Name", "PlayerType", "X", "Y" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.Player), global::Protocol.Player.Parser, new[]{ "Id", "Name", "PlayerType", "X", "Y" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.MoveInfo), global::Protocol.MoveInfo.Parser, new[]{ "H", "V", "HKey", "VKey" }, null, null, null, null)
           }));
     }
     #endregion
@@ -345,6 +348,286 @@ namespace Protocol {
           }
           case 45: {
             Y = input.ReadFloat();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  public sealed partial class MoveInfo : pb::IMessage<MoveInfo>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MoveInfo> _parser = new pb::MessageParser<MoveInfo>(() => new MoveInfo());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<MoveInfo> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Protocol.StructReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MoveInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MoveInfo(MoveInfo other) : this() {
+      h_ = other.h_;
+      v_ = other.v_;
+      hKey_ = other.hKey_;
+      vKey_ = other.vKey_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public MoveInfo Clone() {
+      return new MoveInfo(this);
+    }
+
+    /// <summary>Field number for the "h" field.</summary>
+    public const int HFieldNumber = 1;
+    private float h_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float H {
+      get { return h_; }
+      set {
+        h_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "v" field.</summary>
+    public const int VFieldNumber = 2;
+    private float v_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public float V {
+      get { return v_; }
+      set {
+        v_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "hKey" field.</summary>
+    public const int HKeyFieldNumber = 3;
+    private global::Protocol.KeyState hKey_ = global::Protocol.KeyState.Unpressed;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Protocol.KeyState HKey {
+      get { return hKey_; }
+      set {
+        hKey_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "vKey" field.</summary>
+    public const int VKeyFieldNumber = 4;
+    private global::Protocol.KeyState vKey_ = global::Protocol.KeyState.Unpressed;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Protocol.KeyState VKey {
+      get { return vKey_; }
+      set {
+        vKey_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as MoveInfo);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(MoveInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(H, other.H)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(V, other.V)) return false;
+      if (HKey != other.HKey) return false;
+      if (VKey != other.VKey) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (H != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(H);
+      if (V != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(V);
+      if (HKey != global::Protocol.KeyState.Unpressed) hash ^= HKey.GetHashCode();
+      if (VKey != global::Protocol.KeyState.Unpressed) hash ^= VKey.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (H != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(H);
+      }
+      if (V != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(V);
+      }
+      if (HKey != global::Protocol.KeyState.Unpressed) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) HKey);
+      }
+      if (VKey != global::Protocol.KeyState.Unpressed) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) VKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (H != 0F) {
+        output.WriteRawTag(13);
+        output.WriteFloat(H);
+      }
+      if (V != 0F) {
+        output.WriteRawTag(21);
+        output.WriteFloat(V);
+      }
+      if (HKey != global::Protocol.KeyState.Unpressed) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) HKey);
+      }
+      if (VKey != global::Protocol.KeyState.Unpressed) {
+        output.WriteRawTag(32);
+        output.WriteEnum((int) VKey);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (H != 0F) {
+        size += 1 + 4;
+      }
+      if (V != 0F) {
+        size += 1 + 4;
+      }
+      if (HKey != global::Protocol.KeyState.Unpressed) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) HKey);
+      }
+      if (VKey != global::Protocol.KeyState.Unpressed) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) VKey);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(MoveInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.H != 0F) {
+        H = other.H;
+      }
+      if (other.V != 0F) {
+        V = other.V;
+      }
+      if (other.HKey != global::Protocol.KeyState.Unpressed) {
+        HKey = other.HKey;
+      }
+      if (other.VKey != global::Protocol.KeyState.Unpressed) {
+        VKey = other.VKey;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 13: {
+            H = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            V = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            HKey = (global::Protocol.KeyState) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            VKey = (global::Protocol.KeyState) input.ReadEnum();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 13: {
+            H = input.ReadFloat();
+            break;
+          }
+          case 21: {
+            V = input.ReadFloat();
+            break;
+          }
+          case 24: {
+            HKey = (global::Protocol.KeyState) input.ReadEnum();
+            break;
+          }
+          case 32: {
+            VKey = (global::Protocol.KeyState) input.ReadEnum();
             break;
           }
         }

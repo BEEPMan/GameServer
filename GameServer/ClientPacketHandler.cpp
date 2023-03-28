@@ -171,15 +171,20 @@ bool Handle_C_CHAT(PacketSessionRef& session, Protocol::C_CHAT& pkt)
 
 bool Handle_C_MOVE(PacketSessionRef& session, Protocol::C_MOVE& pkt)
 {
+	cout << "Recv C_MOVE" << endl;
+
 	if (GRoom._players.find(pkt.playerid()) == GRoom._players.end())
 		return true;
 	GRoom._players[pkt.playerid()]->x = pkt.x();
 	GRoom._players[pkt.playerid()]->y = pkt.y();
 
+	Protocol::MoveInfo* moveInfo = new Protocol::MoveInfo(pkt.moveinfo());
+
 	Protocol::S_MOVE movePkt;
 	movePkt.set_playerid(pkt.playerid());
 	movePkt.set_x(pkt.x());
 	movePkt.set_y(pkt.y());
+	movePkt.set_allocated_moveinfo(moveInfo);
 	auto sendBuffer = ClientPacketHandler::MakeSendBuffer(movePkt);
 
 	GRoom.BroadcastOthers(sendBuffer, pkt.playerid()); // WRITE_LOCK

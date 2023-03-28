@@ -47,7 +47,7 @@ struct TableStruct_Struct_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[1]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[2]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -55,11 +55,15 @@ struct TableStruct_Struct_2eproto {
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_Struct_2eproto;
 namespace Protocol {
+class MoveInfo;
+struct MoveInfoDefaultTypeInternal;
+extern MoveInfoDefaultTypeInternal _MoveInfo_default_instance_;
 class Player;
 struct PlayerDefaultTypeInternal;
 extern PlayerDefaultTypeInternal _Player_default_instance_;
 }  // namespace Protocol
 PROTOBUF_NAMESPACE_OPEN
+template<> ::Protocol::MoveInfo* Arena::CreateMaybeMessage<::Protocol::MoveInfo>(Arena*);
 template<> ::Protocol::Player* Arena::CreateMaybeMessage<::Protocol::Player>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace Protocol {
@@ -245,6 +249,171 @@ class Player final :
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_Struct_2eproto;
 };
+// -------------------------------------------------------------------
+
+class MoveInfo final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:Protocol.MoveInfo) */ {
+ public:
+  inline MoveInfo() : MoveInfo(nullptr) {}
+  ~MoveInfo() override;
+  explicit constexpr MoveInfo(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  MoveInfo(const MoveInfo& from);
+  MoveInfo(MoveInfo&& from) noexcept
+    : MoveInfo() {
+    *this = ::std::move(from);
+  }
+
+  inline MoveInfo& operator=(const MoveInfo& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline MoveInfo& operator=(MoveInfo&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const MoveInfo& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const MoveInfo* internal_default_instance() {
+    return reinterpret_cast<const MoveInfo*>(
+               &_MoveInfo_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    1;
+
+  friend void swap(MoveInfo& a, MoveInfo& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(MoveInfo* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(MoveInfo* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline MoveInfo* New() const final {
+    return new MoveInfo();
+  }
+
+  MoveInfo* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<MoveInfo>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const MoveInfo& from);
+  void MergeFrom(const MoveInfo& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(MoveInfo* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "Protocol.MoveInfo";
+  }
+  protected:
+  explicit MoveInfo(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kHFieldNumber = 1,
+    kVFieldNumber = 2,
+    kHKeyFieldNumber = 3,
+    kVKeyFieldNumber = 4,
+  };
+  // float h = 1;
+  void clear_h();
+  float h() const;
+  void set_h(float value);
+  private:
+  float _internal_h() const;
+  void _internal_set_h(float value);
+  public:
+
+  // float v = 2;
+  void clear_v();
+  float v() const;
+  void set_v(float value);
+  private:
+  float _internal_v() const;
+  void _internal_set_v(float value);
+  public:
+
+  // .Protocol.KeyState hKey = 3;
+  void clear_hkey();
+  ::Protocol::KeyState hkey() const;
+  void set_hkey(::Protocol::KeyState value);
+  private:
+  ::Protocol::KeyState _internal_hkey() const;
+  void _internal_set_hkey(::Protocol::KeyState value);
+  public:
+
+  // .Protocol.KeyState vKey = 4;
+  void clear_vkey();
+  ::Protocol::KeyState vkey() const;
+  void set_vkey(::Protocol::KeyState value);
+  private:
+  ::Protocol::KeyState _internal_vkey() const;
+  void _internal_set_vkey(::Protocol::KeyState value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:Protocol.MoveInfo)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  float h_;
+  float v_;
+  int hkey_;
+  int vkey_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_Struct_2eproto;
+};
 // ===================================================================
 
 
@@ -381,9 +550,95 @@ inline void Player::set_y(float value) {
   // @@protoc_insertion_point(field_set:Protocol.Player.y)
 }
 
+// -------------------------------------------------------------------
+
+// MoveInfo
+
+// float h = 1;
+inline void MoveInfo::clear_h() {
+  h_ = 0;
+}
+inline float MoveInfo::_internal_h() const {
+  return h_;
+}
+inline float MoveInfo::h() const {
+  // @@protoc_insertion_point(field_get:Protocol.MoveInfo.h)
+  return _internal_h();
+}
+inline void MoveInfo::_internal_set_h(float value) {
+  
+  h_ = value;
+}
+inline void MoveInfo::set_h(float value) {
+  _internal_set_h(value);
+  // @@protoc_insertion_point(field_set:Protocol.MoveInfo.h)
+}
+
+// float v = 2;
+inline void MoveInfo::clear_v() {
+  v_ = 0;
+}
+inline float MoveInfo::_internal_v() const {
+  return v_;
+}
+inline float MoveInfo::v() const {
+  // @@protoc_insertion_point(field_get:Protocol.MoveInfo.v)
+  return _internal_v();
+}
+inline void MoveInfo::_internal_set_v(float value) {
+  
+  v_ = value;
+}
+inline void MoveInfo::set_v(float value) {
+  _internal_set_v(value);
+  // @@protoc_insertion_point(field_set:Protocol.MoveInfo.v)
+}
+
+// .Protocol.KeyState hKey = 3;
+inline void MoveInfo::clear_hkey() {
+  hkey_ = 0;
+}
+inline ::Protocol::KeyState MoveInfo::_internal_hkey() const {
+  return static_cast< ::Protocol::KeyState >(hkey_);
+}
+inline ::Protocol::KeyState MoveInfo::hkey() const {
+  // @@protoc_insertion_point(field_get:Protocol.MoveInfo.hKey)
+  return _internal_hkey();
+}
+inline void MoveInfo::_internal_set_hkey(::Protocol::KeyState value) {
+  
+  hkey_ = value;
+}
+inline void MoveInfo::set_hkey(::Protocol::KeyState value) {
+  _internal_set_hkey(value);
+  // @@protoc_insertion_point(field_set:Protocol.MoveInfo.hKey)
+}
+
+// .Protocol.KeyState vKey = 4;
+inline void MoveInfo::clear_vkey() {
+  vkey_ = 0;
+}
+inline ::Protocol::KeyState MoveInfo::_internal_vkey() const {
+  return static_cast< ::Protocol::KeyState >(vkey_);
+}
+inline ::Protocol::KeyState MoveInfo::vkey() const {
+  // @@protoc_insertion_point(field_get:Protocol.MoveInfo.vKey)
+  return _internal_vkey();
+}
+inline void MoveInfo::_internal_set_vkey(::Protocol::KeyState value) {
+  
+  vkey_ = value;
+}
+inline void MoveInfo::set_vkey(::Protocol::KeyState value) {
+  _internal_set_vkey(value);
+  // @@protoc_insertion_point(field_set:Protocol.MoveInfo.vKey)
+}
+
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 

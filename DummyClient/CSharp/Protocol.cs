@@ -32,9 +32,11 @@ namespace Protocol {
             "b2NvbC5QbGF5ZXIiIAoMQ19MRUFWRV9HQU1FEhAKCHBsYXllcklkGAEgASgE",
             "IiAKDFNfTEVBVkVfR0FNRRIQCghwbGF5ZXJJZBgBIAEoBCInCgZDX0NIQVQS",
             "EAoIcGxheWVySWQYASABKAQSCwoDbXNnGAIgASgJIicKBlNfQ0hBVBIQCghw",
-            "bGF5ZXJJZBgBIAEoBBILCgNtc2cYAiABKAkiMAoGQ19NT1ZFEhAKCHBsYXll",
-            "cklkGAEgASgEEgkKAXgYAiABKAISCQoBeRgDIAEoAiIwCgZTX01PVkUSEAoI",
-            "cGxheWVySWQYASABKAQSCQoBeBgCIAEoAhIJCgF5GAMgASgCYgZwcm90bzM="));
+            "bGF5ZXJJZBgBIAEoBBILCgNtc2cYAiABKAkiVgoGQ19NT1ZFEhAKCHBsYXll",
+            "cklkGAEgASgEEiQKCG1vdmVJbmZvGAIgASgLMhIuUHJvdG9jb2wuTW92ZUlu",
+            "Zm8SCQoBeBgDIAEoAhIJCgF5GAQgASgCIlYKBlNfTU9WRRIQCghwbGF5ZXJJ",
+            "ZBgBIAEoBBIkCghtb3ZlSW5mbxgCIAEoCzISLlByb3RvY29sLk1vdmVJbmZv",
+            "EgkKAXgYAyABKAISCQoBeRgEIAEoAmIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Protocol.StructReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -46,8 +48,8 @@ namespace Protocol {
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_LEAVE_GAME), global::Protocol.S_LEAVE_GAME.Parser, new[]{ "PlayerId" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.C_CHAT), global::Protocol.C_CHAT.Parser, new[]{ "PlayerId", "Msg" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_CHAT), global::Protocol.S_CHAT.Parser, new[]{ "PlayerId", "Msg" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.C_MOVE), global::Protocol.C_MOVE.Parser, new[]{ "PlayerId", "X", "Y" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_MOVE), global::Protocol.S_MOVE.Parser, new[]{ "PlayerId", "X", "Y" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.C_MOVE), global::Protocol.C_MOVE.Parser, new[]{ "PlayerId", "MoveInfo", "X", "Y" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Protocol.S_MOVE), global::Protocol.S_MOVE.Parser, new[]{ "PlayerId", "MoveInfo", "X", "Y" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1602,6 +1604,7 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public C_MOVE(C_MOVE other) : this() {
       playerId_ = other.playerId_;
+      moveInfo_ = other.moveInfo_ != null ? other.moveInfo_.Clone() : null;
       x_ = other.x_;
       y_ = other.y_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1623,8 +1626,19 @@ namespace Protocol {
       }
     }
 
+    /// <summary>Field number for the "moveInfo" field.</summary>
+    public const int MoveInfoFieldNumber = 2;
+    private global::Protocol.MoveInfo moveInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Protocol.MoveInfo MoveInfo {
+      get { return moveInfo_; }
+      set {
+        moveInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "x" field.</summary>
-    public const int XFieldNumber = 2;
+    public const int XFieldNumber = 3;
     private float x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float X {
@@ -1635,7 +1649,7 @@ namespace Protocol {
     }
 
     /// <summary>Field number for the "y" field.</summary>
-    public const int YFieldNumber = 3;
+    public const int YFieldNumber = 4;
     private float y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float Y {
@@ -1659,6 +1673,7 @@ namespace Protocol {
         return true;
       }
       if (PlayerId != other.PlayerId) return false;
+      if (!object.Equals(MoveInfo, other.MoveInfo)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1668,6 +1683,7 @@ namespace Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (PlayerId != 0UL) hash ^= PlayerId.GetHashCode();
+      if (moveInfo_ != null) hash ^= MoveInfo.GetHashCode();
       if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
       if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
       if (_unknownFields != null) {
@@ -1690,12 +1706,16 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteUInt64(PlayerId);
       }
+      if (moveInfo_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MoveInfo);
+      }
       if (X != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(X);
       }
       if (Y != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(Y);
       }
       if (_unknownFields != null) {
@@ -1711,12 +1731,16 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteUInt64(PlayerId);
       }
+      if (moveInfo_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MoveInfo);
+      }
       if (X != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(X);
       }
       if (Y != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(Y);
       }
       if (_unknownFields != null) {
@@ -1730,6 +1754,9 @@ namespace Protocol {
       int size = 0;
       if (PlayerId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PlayerId);
+      }
+      if (moveInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MoveInfo);
       }
       if (X != 0F) {
         size += 1 + 4;
@@ -1750,6 +1777,12 @@ namespace Protocol {
       }
       if (other.PlayerId != 0UL) {
         PlayerId = other.PlayerId;
+      }
+      if (other.moveInfo_ != null) {
+        if (moveInfo_ == null) {
+          MoveInfo = new global::Protocol.MoveInfo();
+        }
+        MoveInfo.MergeFrom(other.MoveInfo);
       }
       if (other.X != 0F) {
         X = other.X;
@@ -1775,11 +1808,18 @@ namespace Protocol {
             PlayerId = input.ReadUInt64();
             break;
           }
-          case 21: {
-            X = input.ReadFloat();
+          case 18: {
+            if (moveInfo_ == null) {
+              MoveInfo = new global::Protocol.MoveInfo();
+            }
+            input.ReadMessage(MoveInfo);
             break;
           }
           case 29: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 37: {
             Y = input.ReadFloat();
             break;
           }
@@ -1801,11 +1841,18 @@ namespace Protocol {
             PlayerId = input.ReadUInt64();
             break;
           }
-          case 21: {
-            X = input.ReadFloat();
+          case 18: {
+            if (moveInfo_ == null) {
+              MoveInfo = new global::Protocol.MoveInfo();
+            }
+            input.ReadMessage(MoveInfo);
             break;
           }
           case 29: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 37: {
             Y = input.ReadFloat();
             break;
           }
@@ -1846,6 +1893,7 @@ namespace Protocol {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public S_MOVE(S_MOVE other) : this() {
       playerId_ = other.playerId_;
+      moveInfo_ = other.moveInfo_ != null ? other.moveInfo_.Clone() : null;
       x_ = other.x_;
       y_ = other.y_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -1867,8 +1915,19 @@ namespace Protocol {
       }
     }
 
+    /// <summary>Field number for the "moveInfo" field.</summary>
+    public const int MoveInfoFieldNumber = 2;
+    private global::Protocol.MoveInfo moveInfo_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Protocol.MoveInfo MoveInfo {
+      get { return moveInfo_; }
+      set {
+        moveInfo_ = value;
+      }
+    }
+
     /// <summary>Field number for the "x" field.</summary>
-    public const int XFieldNumber = 2;
+    public const int XFieldNumber = 3;
     private float x_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float X {
@@ -1879,7 +1938,7 @@ namespace Protocol {
     }
 
     /// <summary>Field number for the "y" field.</summary>
-    public const int YFieldNumber = 3;
+    public const int YFieldNumber = 4;
     private float y_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public float Y {
@@ -1903,6 +1962,7 @@ namespace Protocol {
         return true;
       }
       if (PlayerId != other.PlayerId) return false;
+      if (!object.Equals(MoveInfo, other.MoveInfo)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(X, other.X)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(Y, other.Y)) return false;
       return Equals(_unknownFields, other._unknownFields);
@@ -1912,6 +1972,7 @@ namespace Protocol {
     public override int GetHashCode() {
       int hash = 1;
       if (PlayerId != 0UL) hash ^= PlayerId.GetHashCode();
+      if (moveInfo_ != null) hash ^= MoveInfo.GetHashCode();
       if (X != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(X);
       if (Y != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(Y);
       if (_unknownFields != null) {
@@ -1934,12 +1995,16 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteUInt64(PlayerId);
       }
+      if (moveInfo_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MoveInfo);
+      }
       if (X != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(X);
       }
       if (Y != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(Y);
       }
       if (_unknownFields != null) {
@@ -1955,12 +2020,16 @@ namespace Protocol {
         output.WriteRawTag(8);
         output.WriteUInt64(PlayerId);
       }
+      if (moveInfo_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(MoveInfo);
+      }
       if (X != 0F) {
-        output.WriteRawTag(21);
+        output.WriteRawTag(29);
         output.WriteFloat(X);
       }
       if (Y != 0F) {
-        output.WriteRawTag(29);
+        output.WriteRawTag(37);
         output.WriteFloat(Y);
       }
       if (_unknownFields != null) {
@@ -1974,6 +2043,9 @@ namespace Protocol {
       int size = 0;
       if (PlayerId != 0UL) {
         size += 1 + pb::CodedOutputStream.ComputeUInt64Size(PlayerId);
+      }
+      if (moveInfo_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(MoveInfo);
       }
       if (X != 0F) {
         size += 1 + 4;
@@ -1994,6 +2066,12 @@ namespace Protocol {
       }
       if (other.PlayerId != 0UL) {
         PlayerId = other.PlayerId;
+      }
+      if (other.moveInfo_ != null) {
+        if (moveInfo_ == null) {
+          MoveInfo = new global::Protocol.MoveInfo();
+        }
+        MoveInfo.MergeFrom(other.MoveInfo);
       }
       if (other.X != 0F) {
         X = other.X;
@@ -2019,11 +2097,18 @@ namespace Protocol {
             PlayerId = input.ReadUInt64();
             break;
           }
-          case 21: {
-            X = input.ReadFloat();
+          case 18: {
+            if (moveInfo_ == null) {
+              MoveInfo = new global::Protocol.MoveInfo();
+            }
+            input.ReadMessage(MoveInfo);
             break;
           }
           case 29: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 37: {
             Y = input.ReadFloat();
             break;
           }
@@ -2045,11 +2130,18 @@ namespace Protocol {
             PlayerId = input.ReadUInt64();
             break;
           }
-          case 21: {
-            X = input.ReadFloat();
+          case 18: {
+            if (moveInfo_ == null) {
+              MoveInfo = new global::Protocol.MoveInfo();
+            }
+            input.ReadMessage(MoveInfo);
             break;
           }
           case 29: {
+            X = input.ReadFloat();
+            break;
+          }
+          case 37: {
             Y = input.ReadFloat();
             break;
           }
